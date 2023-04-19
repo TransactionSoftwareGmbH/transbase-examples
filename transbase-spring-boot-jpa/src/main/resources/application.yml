@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:transbase://localhost:2024/admin
+    driver-class-name: transbase.jdbc.Driver
+    username: tbadmin
+    password: transbase
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: transbase.hibernate.TransbaseDialect # TODO: fehlt im jar??
+        format_sql: true
+    show-sql: true
