@@ -2,26 +2,41 @@ package de.transaction.demo.cashbook;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-class CashbookService {
+@Service
+class CashbookService
+{
+    private final CashbookRepository repository;
 
-    @Autowired
-    private CashbookRepository repository;
+    CashbookService(CashbookRepository repository)
+    {
+        this.repository = repository;
+    }
 
-    List<CashbookRecord> list() {
+    public List<CashbookRecord> list()
+    {
         return repository.findAll().stream().map(Cashbook::toRecord).toList();
     }
 
-    void add(CashbookRecord data) {
-        repository.save(new Cashbook(data));
+    public CashbookRecord get(int id)
+    {
+        return repository.getReferenceById(id).toRecord();
     }
 
-    void update(int id, CashbookRecord data) {
+    public Integer add(CashbookRecord data)
+    {
+        return repository.save(new Cashbook(data)).getId();
+    }
+
+    public void update(int id, CashbookRecord data)
+    {
         repository.getReferenceById(id).update(data);
     }
 
-    void delete(int id) {
+    public void delete(int id)
+    {
         repository.deleteById(id);
     }
+
 }

@@ -2,37 +2,58 @@ package de.transaction.demo.cashbook;
 
 import java.time.Instant;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-class Cashbook {
-
+class Cashbook
+{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "nr")
     private Integer id;
-    private Instant timestamp;
+
+    private Instant date;
     private double amount;
     private String comment;
 
-    protected Cashbook() {
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public Instant getDate()
+    {
+        return date;
+    }
+
+    public double getAmount()
+    {
+        return amount;
+    }
+
+    public String getComment()
+    {
+        return comment;
+    }
+
+    Cashbook()
+    {
 
     }
 
-    Cashbook(CashbookRecord data) {
+    Cashbook(CashbookRecord data)
+    {
         update(data);
     }
 
-    CashbookRecord toRecord() {
-        return new CashbookRecord(id, timestamp, amount, comment);
+    CashbookRecord toRecord()
+    {
+        return new CashbookRecord(id, date, amount, comment);
     }
 
-    void update(CashbookRecord data) {
-        timestamp = data.timestamp();
+    void update(CashbookRecord data)
+    {
+        date = data.timestamp();
         amount = data.amount();
         comment = data.comment();
     }
