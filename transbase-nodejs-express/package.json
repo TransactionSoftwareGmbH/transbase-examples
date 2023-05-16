@@ -1,0 +1,18 @@
+{
+  "name": "transbase-nodejs-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "node schema",
+    "start": "node server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@transaction/transbase-nodejs": "^0.0.11",
+    "express": "^4.18.2"
+  }
+}
