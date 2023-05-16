@@ -36,7 +36,7 @@ public class CashbookApiTest
         createRecord(-12, "Lunch");
 
         ResponseEntity<CashbookRecord[]> response =
-            restTemplate.getForEntity("/cashbooks", CashbookRecord[].class);
+            restTemplate.getForEntity("/cashbook", CashbookRecord[].class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
@@ -49,11 +49,11 @@ public class CashbookApiTest
         createRecord(-12, "Lunch");
 
         ResponseEntity<CashbookRecord[]> list =
-            restTemplate.getForEntity("/cashbooks", CashbookRecord[].class);
+            restTemplate.getForEntity("/cashbook", CashbookRecord[].class);
         assertNotNull(list.getBody());
 
         ResponseEntity<CashbookRecord> details =
-            restTemplate.getForEntity("/cashbooks/" + list.getBody()[0].id(), CashbookRecord.class);
+            restTemplate.getForEntity("/cashbook/" + list.getBody()[0].id(), CashbookRecord.class);
 
         assertEquals(HttpStatus.OK, details.getStatusCode());
         assertNotNull(details.getBody());
@@ -65,7 +65,7 @@ public class CashbookApiTest
     {
         CashbookRecord cashbook = new CashbookRecord(null, Instant.now(), 100, "Lunch");
 
-        ResponseEntity<Integer> response = restTemplate.postForEntity("/cashbooks", cashbook, Integer.class);
+        ResponseEntity<Integer> response = restTemplate.postForEntity("/cashbook", cashbook, Integer.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
@@ -76,12 +76,12 @@ public class CashbookApiTest
     {
         CashbookRecord cashbook = new CashbookRecord(null, Instant.now(), 100, "Lunch");
 
-        ResponseEntity<Integer> created = restTemplate.postForEntity("/cashbooks", cashbook, Integer.class);
+        ResponseEntity<Integer> created = restTemplate.postForEntity("/cashbook", cashbook, Integer.class);
 
-        restTemplate.delete("/cashbooks/" + created.getBody());
+        restTemplate.delete("/cashbook/" + created.getBody());
 
         ResponseEntity<String> getResponse =
-            restTemplate.getForEntity("/cashbooks/" + created.getBody(), String.class);
+            restTemplate.getForEntity("/cashbook/" + created.getBody(), String.class);
 
         assertEquals(HttpStatus.NOT_FOUND, getResponse.getStatusCode());
     }

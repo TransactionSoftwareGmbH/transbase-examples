@@ -4,7 +4,7 @@
 
 You need a running transbase database for this example (//localhost:2024/cashbook)
 with user `tbadmin` and password `transbase`.
-Transbase can be started with the included docker-compose script:
+Transbase can be started with the included [docker-compose.yml](../docker-compose.yml) script:
 
 `docker-compose up`
 
@@ -19,7 +19,7 @@ Start the application with
 `./gradlew bootRun` or run `Application.java` from your IDE.
 
 A cashbook rest api is available at
-```http://localhost:8080/cashbooks```
+`http://localhost:8080/cashbook`
 
 ### Reference Documentation
 
