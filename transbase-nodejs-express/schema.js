@@ -17,7 +17,7 @@ transbase.query(
   `insert into cashbook values (default, currentdate, -9.50, 'Lunch');`
 );
 transbase.query(
-  `insert into cashbook values (default, currentdate, -9.50, 'Lunch');`
+  `insert into cashbook values (default, currentdate, 2789, 'Salary');`
 );
 
 transbase.close();

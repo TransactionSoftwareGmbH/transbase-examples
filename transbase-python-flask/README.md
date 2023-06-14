@@ -1,4 +1,4 @@
-# Transbase Spring Boot JPA
+# Transbase Python Flask
 
 ### Requirements
 
@@ -14,8 +14,11 @@ then create a new cashbook database with
 - `connect //localhost:2024/admin tbadmin transbase`
 - `create database cashbook set encryption=none;`
 
-Start the application with
-`npm start`
+Install required libraries
+`pip install -r requirements.txt`
+
+Start the server with
+`python app.py`
 
 A cashbook rest api is available at
 `http://localhost:8080/cashbook`
