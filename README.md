@@ -4,8 +4,8 @@ Some transbase database example projects
 
 Java
 
+- [transbase-jdbc](transbase-jdbc/README.md)
 - [transbase-spring-boot-jpa](transbase-spring-boot-jpa/README.md)
-- ...
 
 Nodejs
 
