@@ -1,4 +1,4 @@
-# Transbase Node.js Express
+# Transbase Node.js Graphql
 
 ### Requirements
 
@@ -17,8 +17,52 @@ then create a new cashbook database with
 Start the application with
 `npm start`
 
-A cashbook rest api is available at
-`http://localhost:8080/cashbook`
+A cashbook graphql api (apollo explorer) is available at
+`http://localhost:8080`
+
+Here are some example gql queries to execute:
+
+query all cashbook entries:
+
+```graphql
+query Cashbooks {
+  cashbooks {
+    nr
+    amount
+    date
+    comment
+  }
+}
+```
+
+add a new cashbook entry:
+
+```graphql
+mutation {
+  addCashbook(amount: 100, date: "2023-07-11", comment: "New cashbook entry")
+}
+```
+
+update an existing cashbook entry:
+
+```graphql
+mutation {
+  updateCashbook(
+    nr: 1
+    amount: 200
+    date: "2023-07-12"
+    comment: "Updated cashbook entry"
+  )
+}
+```
+
+delete a cashbook entry:
+
+```graphql
+mutation {
+  deleteCashbook(nr: 1)
+}
+```
 
 ### Reference Documentation
 
@@ -26,4 +70,4 @@ For further reference, please consider the following sections:
 
 - [Transbase Getting Started](https://www.transaction.de/fileadmin/public/transbase/8.4/docu/getstart.xhtml)
 - [Transbase nodejs](https://github.com/TransactionSoftwareGmbH/transbase-nodejs)
-- [Express](http://expressjs.com/)
+- [Graphql](https://graphql.org/graphql-js/)
